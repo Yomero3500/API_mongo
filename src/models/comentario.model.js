@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
 const comentario = new Schema({
   contenido: { type: String, require: true },
   fechaCreacion: { type: Date, require: true },
