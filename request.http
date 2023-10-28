@@ -1,0 +1,98 @@
+###
+//Obtener todos los usuarios 
+GET http://localhost:3006/usuarios HTTP/1.1
+
+
+###
+//obtener usuario por email
+GET http://localhost:3006/usuarios/pancho223193@gmail.com HTTP/1.1
+
+//Crear usuario
+###
+POST http://localhost:3006/usuarios/usuario HTTP/1.1
+Content-Type: application/json
+
+{
+"nombre": "Michelada",
+"email": "panol223193@gmail.com"
+}
+
+###
+//Eliminar usuario y todos las publicaciones y comentarios que se relacionan a el
+DELETE  http://localhost:3006/usuarios/historial/Michelada HTTP/1.1
+###
+//Eliminar usuario y las referncias en las publicaciones y comentarios que se relacionan a el
+DELETE  http://localhost:3006/usuarios/referencias/Michelada HTTP/1.1
+
+
+//***  Publicacion  ***//
+//Obtiene todas las publicaciones
+
+###
+GET http://localhost:3006/publicacion/ HTTP/1.1
+
+//Obtiene las publicaciones por usuario
+###
+GET http://localhost:3006/publicacion/parce2  HTTP/1.1
+
+
+//Creacion de publicacion
+###
+POST http://localhost:3006/publicacion/add HTTP/1.1
+Content-Type: application/json
+
+{
+"titulo": "la vide ",
+"contenido": "El soplafierro o mascafierro conocido asi por su mayate",
+"fecha_creacion": "2023-10-23",
+"usuario_id": "653d7b3e1e4f27706de7a5f2"
+}
+###
+//Editar contenido de la publicacion por el titulo de esta
+PUT http://localhost:3006/publicacion/la vida de michi HTTP/1.1
+Content-Type: application/json
+
+{
+"contenido": "Vendo pozol manden inbox"
+}
+
+###
+//Eliminacion de publicacion por fecha
+DELETE  http://localhost:3006/publicacion/2023-09-01 HTTP/1.1
+
+//***  Comentarios  ***//
+
+//Obtener todos los comentarios
+###
+GET http://localhost:3006/comentarios/ HTTP/1.1
+
+//Obtener todos los comentarios por publicacion
+####
+
+GET http://localhost:3006/comentarios/la vida de michi HTTP/1.1
+
+###
+//Añadir un nuevo comentario
+POST http://localhost:3006/comentarios/add HTTP/1.1
+Content-Type: application/json
+
+{
+"contenido": "El sopla cabezas conocido asi por su mayate",
+"fechaCreacion": "2023-10-13",
+"publicacion": "653d7b4b1e4f27706de7a5f4",
+"usuario": "653d7b3e1e4f27706de7a5f2"
+}
+
+###
+//Actualizar-Modificar comentario 
+PUT http://localhost:3006/comentarios/update/la vide de michi&Michel  HTTP/1.1
+Content-Type: application/json
+
+{
+"contenido": "Vendo pozol manden inbox"
+}
+
+###
+@param=la vide de michi
+//Eliminar comentario con fecha y publicacion
+DELETE http://localhost:3006/comentarios/2023-10-13&{{param}}  HTTP/1.1
